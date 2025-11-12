@@ -23,7 +23,15 @@ namespace MunicipalServicesApp.Forms
             this.Size = new Size(950, 700);
 
             tableLayoutPanel1.Padding = new Padding(40);
+            tableLayoutPanel1.SetColumnSpan(dgvAll, 2);
+            tableLayoutPanel1.SetColumnSpan(lblResult, 2);
             dgvAll.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAll.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvAll.RowTemplate.Height = 48;
+            dgvAll.ColumnHeadersHeight = 45;
+            dgvAll.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvAll.AllowUserToAddRows = false;
+            dgvAll.AllowUserToDeleteRows = false;
         }
 
         private void txtId_TextChanged(object sender, EventArgs e)

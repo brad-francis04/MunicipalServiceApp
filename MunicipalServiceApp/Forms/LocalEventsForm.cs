@@ -22,9 +22,16 @@ namespace MunicipalServicesApp.Forms
             // APPLY STYLE
             UI.ApplyModernStyle(this);
             this.Text = "Local Events & Announcements";
-            this.Size = new Size(950,700);
+            this.Size = new Size(950, 700);
             tableLayoutPanel1.Padding = new Padding(40);
+            tableLayoutPanel1.SetColumnSpan(dgvEvents, 2);
             dgvEvents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvEvents.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvEvents.RowTemplate.Height = 48;
+            dgvEvents.ColumnHeadersHeight = 45;
+            dgvEvents.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvEvents.AllowUserToAddRows = false;
+            dgvEvents.AllowUserToDeleteRows = false;
         }
 
         private void LoadSampleData()

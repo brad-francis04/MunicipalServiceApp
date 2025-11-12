@@ -20,7 +20,7 @@ namespace MunicipalServicesApp.Forms
 
             UI.ApplyModernStyle(this);
             this.Text = "Service Request Status";
-            this.Size = new Size(950, 700);
+            this.Size = new Size(0, 700);
 
             tableLayoutPanel1.Padding = new Padding(40);
             tableLayoutPanel1.SetColumnSpan(dgvAll, 2);

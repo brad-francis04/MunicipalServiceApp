@@ -17,7 +17,7 @@ namespace MunicipalServicesApp.Forms
             InitializeComponent();
             events = DataManager.Load<Event>("events.json");
             LoadSampleData();
-            RefreshGrid(); // NOW WORKS!
+            RefreshGrid(); 
 
             // APPLY STYLE
             UI.ApplyModernStyle(this);

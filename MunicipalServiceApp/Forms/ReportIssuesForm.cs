@@ -26,7 +26,7 @@ namespace MunicipalServicesApp.Forms
             this.Text = "Report Municipal Issue";
         }
 
-        // ATTACH MEDIA — FULLY WORKING
+        // ATTACH MEDIA 
         private void btnAttach_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -41,7 +41,7 @@ namespace MunicipalServicesApp.Forms
             }
         }
 
-        // SUBMIT REPORT — FULLY WORKING
+        // SUBMIT REPORT 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             // Validate
@@ -78,7 +78,7 @@ namespace MunicipalServicesApp.Forms
             lblMedia.Text = "(No file)";
         }
 
-        // BACK BUTTON — FULLY WORKING
+        // BACK BUTTON 
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close(); // Closes form and returns to Main Menu

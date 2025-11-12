@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using MunicipalServicesApp.Models;
 using MunicipalServicesApp.Helpers;
@@ -14,24 +15,25 @@ namespace MunicipalServicesApp.Forms
             InitializeComponent();
             issues = DataManager.Load<Issue>("issues.json");
 
-            // Populate ComboBox
+            // Populate Category ComboBox
             if (cmbCategory.Items.Count == 0)
+            {
                 cmbCategory.Items.AddRange(new[] { "Water", "Electricity", "Roads", "Sanitation" });
+            }
 
+            // Apply UI style
             UI.ApplyModernStyle(this);
             this.Text = "Report Municipal Issue";
-            this.Size = new Size(850, 700);
-
-            // Fix layout
-            tableLayoutPanel1.Padding = new Padding(40);
-            tableLayoutPanel1.ColumnStyles[1] = new ColumnStyle(SizeType.Percent, 100F);
-            rtbDescription.Height = 120;
         }
+
+        // ATTACH MEDIA — FULLY WORKING
         private void btnAttach_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "Images|*.jpg;*.png;*.jpeg|All files|*.*";
+                ofd.Filter = "Images|*.jpg;*.jpeg;*.png;*.bmp|All files|*.*";
+                ofd.Title = "Select Media File";
+
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     lblMedia.Text = ofd.FileName;
@@ -39,20 +41,20 @@ namespace MunicipalServicesApp.Forms
             }
         }
 
-        // SUBMIT BUTTON — FULLY WORKING
+        // SUBMIT REPORT — FULLY WORKING
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            // Validate input
+            // Validate
             if (string.IsNullOrWhiteSpace(txtLocation.Text) ||
                 cmbCategory.SelectedIndex == -1 ||
                 string.IsNullOrWhiteSpace(rtbDescription.Text))
             {
-                MessageBox.Show("Please fill all required fields!", "Validation Error",
+                MessageBox.Show("Please fill all required fields!", "Validation",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Create new issue
+            // Create issue
             var issue = new Issue
             {
                 Location = txtLocation.Text.Trim(),
@@ -61,14 +63,12 @@ namespace MunicipalServicesApp.Forms
                 MediaPath = lblMedia.Text == "(No file)" ? null : lblMedia.Text
             };
 
-            // Add to list and save
+            // Save
             issues.Add(issue);
             DataManager.Save(issues, "issues.json");
 
-            // Show success + ID
-            pbEngagement.Value = 100;
-            lblFeedback.Text = "Thank you! Your report helps improve our community.";
-            MessageBox.Show($"Report submitted successfully!\n\nYour ID: {issue.Id}\n\nUse this ID to track status.",
+            // Feedback
+            MessageBox.Show($"Report submitted!\n\nID: {issue.Id}\n\nUse this to track status.",
                 "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Reset form
@@ -76,13 +76,12 @@ namespace MunicipalServicesApp.Forms
             cmbCategory.SelectedIndex = -1;
             rtbDescription.Clear();
             lblMedia.Text = "(No file)";
-            pbEngagement.Value = 0;
-            lblFeedback.Text = "";
         }
 
+        // BACK BUTTON — FULLY WORKING
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); // Closes form and returns to Main Menu
         }
     }
 }

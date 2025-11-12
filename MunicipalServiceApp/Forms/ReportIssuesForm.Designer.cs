@@ -105,10 +105,11 @@
             // 
             btnAttach.Location = new Point(258, 173);
             btnAttach.Name = "btnAttach";
-            btnAttach.Size = new Size(105, 28);
+            btnAttach.Size = new Size(120, 32);
             btnAttach.TabIndex = 6;
             btnAttach.Text = "Attach Media";
             btnAttach.UseVisualStyleBackColor = true;
+            btnAttach.Click += btnAttach_Click;
             // 
             // lblMedia
             // 
@@ -123,7 +124,7 @@
             // 
             btnSubmit.Location = new Point(258, 239);
             btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(362, 38);
+            btnSubmit.Size = new Size(150, 41);
             btnSubmit.TabIndex = 8;
             btnSubmit.Text = "Submit Report";
             btnSubmit.UseVisualStyleBackColor = true;
@@ -133,10 +134,11 @@
             // 
             btnBack.Location = new Point(258, 286);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(362, 38);
+            btnBack.Size = new Size(100, 41);
             btnBack.TabIndex = 9;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // pbEngagement
             // 
